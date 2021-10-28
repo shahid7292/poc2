@@ -8,6 +8,7 @@ function App() {
   for (let data of mainData) {
     groups.push(data.group);
     totalVisitors += data.visitors;
+    dates.push(new Date(data.date));
   }
   groups = [...new Set(groups)];
   const newData = {};
@@ -20,7 +21,6 @@ function App() {
     newData[data?.group]["appearanceTimeInSecs"] =
       (newData[data?.group]["appearanceTimeInSecs"] || 0) +
       data.appearanceTimeInSecs;
-    dates.push(new Date(data.date));
   }
 
   const maxDate = new Date(Math.max.apply(null, dates));
